@@ -4,6 +4,9 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 
+// import routers
+import userRouter from "./routes/user.route.js";
+
 // config & connect to db
 dotenv.config();
 mongoose
@@ -18,6 +21,9 @@ app.use(express.json());
 
 // Routes
 app.get("/", (req, res) => res.send("Working!")); // Default route for testing
+
+// user routes
+app.use("/api/user/", userRouter);
 
 // start the server
 const PORT = process.env.PORT || 8000;
