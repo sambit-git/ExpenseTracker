@@ -4,6 +4,10 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 
+// import middlewares
+import cookieParser from "cookie-parser";
+import { showError } from "./middlewares/general.middleware.js";
+
 // import routers
 import userRouter from "./routes/user.route.js";
 
@@ -18,12 +22,12 @@ mongoose
 const app = express();
 app.use(cors({ origin: process.env.FRONTEND_ENDPOINT }));
 app.use(express.json());
-
+app.use(cookieParser());
 // Routes
 app.get("/", (req, res) => res.send("Working!")); // Default route for testing
 
-// user routes
 app.use("/api/user/", userRouter);
+app.use(showError); // middleware
 
 // start the server
 const PORT = process.env.PORT || 8000;
