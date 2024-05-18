@@ -1,0 +1,171 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "ExpenseTracker",
+    "collectionId": "6dd586af-5941-459b-b8b4-631fd67bba88",
+    "dateExported": "2024-05-18T19:46:38.711Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "3af1c1b8-c92f-4046-8114-00faa46aa44b",
+            "colId": "6dd586af-5941-459b-b8b4-631fd67bba88",
+            "containerId": "",
+            "name": "Register",
+            "url": "http://localhost:3000/api/user/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-05-13T15:19:25.161Z",
+            "modified": "2024-05-13T15:23:50.559Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"sambit\",\n  \"fullName\": \"Sambit Kumar\",\n  \"email\": \"sambit.kumar142@gmail.com\",\n  \"password\": \"password\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "cadc9314-254a-474e-911c-5ae2c3fb2c23",
+            "colId": "6dd586af-5941-459b-b8b4-631fd67bba88",
+            "containerId": "",
+            "name": "Login",
+            "url": "http://localhost:3000/api/user/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-05-13T15:19:34.002Z",
+            "modified": "2024-05-18T17:34:24.942Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"sambit\",\n  \"password\": \"pass\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "8b7cf126-8127-42bb-9a41-58d347397697",
+            "colId": "6dd586af-5941-459b-b8b4-631fd67bba88",
+            "containerId": "",
+            "name": "category:create",
+            "url": "http://localhost:3000/api/category/create",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-05-18T12:57:09.888Z",
+            "modified": "2024-05-18T19:41:39.965Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Food\",\n  \"description\": \"Outside Food, e.g. in restaurant\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "1612d850-1ee8-49d4-90eb-159a6b799116",
+            "colId": "6dd586af-5941-459b-b8b4-631fd67bba88",
+            "containerId": "",
+            "name": "category:all",
+            "url": "http://localhost:3000/api/category/all",
+            "method": "GET",
+            "sortNum": 42500,
+            "created": "2024-05-18T12:07:18.775Z",
+            "modified": "2024-05-18T12:57:35.927Z",
+            "headers": []
+        },
+        {
+            "_id": "ed3efcba-77d6-4e2a-ba9e-7b60fad97b82",
+            "colId": "6dd586af-5941-459b-b8b4-631fd67bba88",
+            "containerId": "",
+            "name": "category:update",
+            "url": "http://localhost:3000/api/category/edit/6648a3089e8f29895abc9e46",
+            "method": "PUT",
+            "sortNum": 45000,
+            "created": "2024-05-18T18:24:23.237Z",
+            "modified": "2024-05-18T19:43:23.812Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Necessary Purchase\",\n  \"description\": \"Tooth Brush, Paste, Soap, Shampoo etc.\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "16fda8b5-6c70-4361-8542-0ff6815f3856",
+            "colId": "6dd586af-5941-459b-b8b4-631fd67bba88",
+            "containerId": "",
+            "name": "category:delete",
+            "url": "http://localhost:3000/api/category/delete/6648a3089e8f29895abc9e46",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-05-18T16:49:29.899Z",
+            "modified": "2024-05-18T19:44:11.141Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Grocessary\",\n  \"description\": \"Monthly grocessary\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "82992d44-7f25-416e-9f2c-34794b80b571",
+            "colId": "6dd586af-5941-459b-b8b4-631fd67bba88",
+            "containerId": "",
+            "name": "account:create",
+            "url": "http://localhost:3000/api/account/create",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-05-18T19:24:20.381Z",
+            "modified": "2024-05-18T19:28:07.615Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"icici bank\",\n  \"description\": \"Debit Account\",\n  \"balance\": \"13000\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "91d15f5b-17aa-4ace-894a-e5aab3c0c959",
+            "colId": "6dd586af-5941-459b-b8b4-631fd67bba88",
+            "containerId": "",
+            "name": "account:all",
+            "url": "http://localhost:3000/api/account/all",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2024-05-18T19:23:35.510Z",
+            "modified": "2024-05-18T19:28:26.657Z",
+            "headers": []
+        },
+        {
+            "_id": "bd7d18cc-3cb1-4634-869a-f233779c16ba",
+            "colId": "6dd586af-5941-459b-b8b4-631fd67bba88",
+            "containerId": "",
+            "name": "account:update",
+            "url": "http://localhost:3000/api/account/edit/6649012e1191b5a30df0506d",
+            "method": "PUT",
+            "sortNum": 90000,
+            "created": "2024-05-18T19:24:51.912Z",
+            "modified": "2024-05-18T19:32:30.499Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"icici bank\",\n  \"balance\": 15005\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "bbd6f6b8-21e7-4267-8b39-2ff7efab8b2a",
+            "colId": "6dd586af-5941-459b-b8b4-631fd67bba88",
+            "containerId": "",
+            "name": "account:delete",
+            "url": "http://localhost:3000/api/account/delete/6649012e1191b5a30df0506d",
+            "method": "DELETE",
+            "sortNum": 100000,
+            "created": "2024-05-18T19:25:51.897Z",
+            "modified": "2024-05-18T19:34:08.551Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Grocessary\",\n  \"description\": \"Monthly grocessary\"\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "FqIj-p8dA3d01kyppkeJam6dpHY4_L-LYHGIo0D7l5BH4FgsL47pz61W33iJQYWWilUHqUjk28tDop-cGNJDig"
+}
