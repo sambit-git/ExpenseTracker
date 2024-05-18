@@ -1,14 +1,15 @@
 import mongoose from "mongoose";
 
-const categorySchema = mongoose.Schema(
+const accountSchema = mongoose.Schema(
   {
     name: { type: String, required: true },
-    description: { type: String, required: false },
+    description: { type: String },
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    balance: { type: Number },
   },
   { timestamps: true }
 );
 
-const Category = mongoose.model("Category", categorySchema);
+const Account = mongoose.model("Account", accountSchema);
 
-export default Category;
+export default Account;

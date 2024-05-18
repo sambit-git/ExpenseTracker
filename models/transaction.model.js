@@ -17,6 +17,7 @@ const transactionSchema = mongoose.Schema(
       enum: ["credit", "debit"],
       default: "debit",
     },
+    account: { type: mongoose.Schema.Types.ObjectId, ref: "Account" },
   },
   { timestamps: true }
 );

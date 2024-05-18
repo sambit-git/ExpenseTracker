@@ -10,6 +10,8 @@ import { showError } from "./middlewares/general.middleware.js";
 
 // import routers
 import userRouter from "./routes/user.route.js";
+import categoryRouter from "./routes/category.route.js";
+import accountRouter from "./routes/account.route.js";
 
 // config & connect to db
 dotenv.config();
@@ -27,6 +29,9 @@ app.use(cookieParser());
 app.get("/", (req, res) => res.send("Working!")); // Default route for testing
 
 app.use("/api/user/", userRouter);
+app.use("/api/category/", categoryRouter);
+app.use("/api/account/", accountRouter);
+
 app.use(showError); // middleware
 
 // start the server
