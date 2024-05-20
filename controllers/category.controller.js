@@ -1,4 +1,5 @@
 import Category from "../models/category.model.js";
+import { hasUserAccessToCategory } from "../utils/category.util.js";
 import { errResponse } from "../utils/exception_response.util.js";
 
 export const createCategory = async (req, res, next) => {
@@ -31,15 +32,20 @@ export const allCategory = async (req, res, next) => {
 };
 
 export const updateCategory = async (req, res, next) => {
-  const category = req.category;
-  const { name, description } = req.body;
+  const { categoryId } = req.params;
+  const properties = ["name", "description"];
+
+  const { category, error } = await hasUserAccessToCategory(
+    req.user._id,
+    categoryId
+  );
+  if (error) return next(error);
 
   const dataToUpdate = {};
-
-  if (name && name !== category.name) dataToUpdate.name = name;
-  if (description && description !== category.description)
-    dataToUpdate.description = description;
-
+  properties.forEach((prop) => {
+    if (req.body[prop] && req.body[prop] !== category[prop])
+      dataToUpdate[prop] = req.body[prop];
+  });
   if (Object.keys(dataToUpdate).length === 0)
     return res.status(200).json({ message: "no changes detectected!" });
 
@@ -56,7 +62,13 @@ export const updateCategory = async (req, res, next) => {
 };
 
 export const deleteCategory = async (req, res, next) => {
-  const category = req.category;
+  const { categoryId } = req.params;
+
+  const { category, error } = await hasUserAccessToCategory(
+    req.user._id,
+    categoryId
+  );
+  if (error) return next(error);
 
   try {
     await Category.deleteOne({ _id: category._id });

@@ -1,4 +1,5 @@
 import Account from "../models/account.model.js";
+import { hasUserAccessToAccount } from "../utils/account.util.js";
 import { errResponse } from "../utils/exception_response.util.js";
 
 export const createAccount = async (req, res, next) => {
@@ -35,15 +36,20 @@ export const allAccounts = async (req, res, next) => {
 };
 
 export const updateAccount = async (req, res, next) => {
-  const account = req.account;
-  const { name, description, balance } = req.body;
+  const { accountId } = req.params;
+  const properties = ["name", "description", "balance"];
+
+  const { account, error } = await hasUserAccessToAccount(
+    req.user._id,
+    accountId
+  );
+  if (error) return next(error);
 
   const dataToUpdate = {};
-
-  if (name && name !== account.name) dataToUpdate.name = name;
-  if (balance && balance !== account.balance) dataToUpdate.balance = balance;
-  if (description && description !== account.description)
-    dataToUpdate.description = description;
+  properties.forEach((prop) => {
+    if (req.body[prop] && req.body[prop] !== account[prop])
+      dataToUpdate[prop] = req.body[prop];
+  });
 
   if (Object.keys(dataToUpdate).length === 0)
     return res.status(200).json({ message: "no changes detectected!" });
@@ -61,7 +67,13 @@ export const updateAccount = async (req, res, next) => {
 };
 
 export const deleteAccount = async (req, res, next) => {
-  const account = req.account;
+  const { accountId } = req.params;
+
+  const { account, error } = await hasUserAccessToAccount(
+    req.user._id,
+    accountId
+  );
+  if (error) return next(error);
 
   try {
     await Account.deleteOne({ _id: account._id });

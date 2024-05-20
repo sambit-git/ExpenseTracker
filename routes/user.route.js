@@ -10,6 +10,6 @@ const router = Router();
 
 router.post("/register", register);
 router.post("/login", login);
-router.get("/show-all", showAllUsers);
+router.get("/all", showAllUsers);
 
 export default router;

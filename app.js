@@ -12,6 +12,7 @@ import { showError } from "./middlewares/general.middleware.js";
 import userRouter from "./routes/user.route.js";
 import categoryRouter from "./routes/category.route.js";
 import accountRouter from "./routes/account.route.js";
+import transactionRouter from "./routes/transaction.route.js";
 
 // config & connect to db
 dotenv.config();
@@ -31,6 +32,7 @@ app.get("/", (req, res) => res.send("Working!")); // Default route for testing
 app.use("/api/user/", userRouter);
 app.use("/api/category/", categoryRouter);
 app.use("/api/account/", accountRouter);
+app.use("/api/transaction/", transactionRouter);
 
 app.use(showError); // middleware
 

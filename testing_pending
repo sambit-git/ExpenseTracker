@@ -1,0 +1,13 @@
+create transaction
+
+1. should not be able to use any other transaction type than 'credit' or 'debit'
+2. should not be able to create a transaction on other's category
+3. should not be able to create transaction on other's account
+4. should not be able to create transaction without authorization
+5. title can't be empty
+6. amount cant' be empty
+7. should be able to create without category
+8. should be able to create without account
+9. should be able to create without description
+10. should be able to create without transaction type (default should be taken)
+11. should be able to create without datetime
