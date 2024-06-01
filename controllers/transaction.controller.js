@@ -55,7 +55,8 @@ export const allTransactions = async (req, res, next) => {
       user: req.user._id,
     })
       .populate("user")
-      .populate("category");
+      .populate("category")
+      .populate("account");
     return res.status(200).json(transactions);
   } catch (error) {
     return next(error);
@@ -70,8 +71,6 @@ export const updateTransaction = async (req, res, next) => {
     transactionId
   );
   if (error) return next(error);
-
-  console.log(transaction);
 
   const dataToUpdate = {};
   const properties = [

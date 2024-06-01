@@ -66,3 +66,7 @@ export const showAllUsers = async (req, res, next) => {
     return next(error);
   }
 };
+
+export const isLoggedIn = (req, res, next) => {
+  return res.json(req.user);
+};
