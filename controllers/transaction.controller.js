@@ -11,7 +11,7 @@ export const createTransaction = async (req, res, next) => {
     description,
     datetime,
     amount,
-    transaction_type,
+    transactionType,
     account,
     category,
   } = req.body;
@@ -23,7 +23,7 @@ export const createTransaction = async (req, res, next) => {
       )
     );
   if (!amount)
-    return errResponse(400, "Please provide your transaction amount");
+    return next(errResponse(400, "Please provide your transaction amount"));
 
   const { hasAccess, error } = await hasUserAccessToAccountAndCategory(
     req.user._id,
@@ -38,7 +38,7 @@ export const createTransaction = async (req, res, next) => {
       description,
       datetime,
       amount,
-      transaction_type,
+      transactionType,
       account,
       user: req.user._id,
       category,
@@ -78,7 +78,7 @@ export const updateTransaction = async (req, res, next) => {
     "description",
     "datetime",
     "amount",
-    "transaction_type",
+    "transactionType",
     "account",
     "category",
   ];

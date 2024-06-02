@@ -13,8 +13,8 @@ const transactionSchema = mongoose.Schema(
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     datetime: { type: Date, default: Date.now },
     amount: { type: Number, required: true },
-    transaction_type: { type: String, enum: transactionTypes },
-    default_transaction_type: {
+    transactionType: { type: String, enum: transactionTypes },
+    defaultTransactionType: {
       type: String,
       enum: transactionTypes,
       default: "debit",
