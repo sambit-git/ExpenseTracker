@@ -3,8 +3,12 @@ import User from "../models/user.model.js";
 import { errResponse } from "../utils/exception_response.util.js";
 
 export const isAuthenticated = async (req, res, next) => {
-  const token = req.cookies.token;
-  if (!token) return next(errResponse(401, "authentication token is missing"));
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return next(errResponse(401, "authentication token is missing"));
+  }
+
+  const token = authHeader.split(" ")[1];
 
   let decoded;
   try {

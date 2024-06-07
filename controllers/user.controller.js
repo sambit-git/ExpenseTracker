@@ -46,14 +46,9 @@ export const login = async (req, res, next) => {
       return next(errResponse(400, "you've entered an incorrect password."));
 
     const token = jwt.sign({ user_id: user._id }, process.env.JWT_SECRET_KEY);
-    return res
-      .status(200)
-      .cookie("token", token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production", // Use secure cookies in production
-        sameSite: "Lax",
-      })
-      .json(user);
+    const { password: pass, ...userWithoutPassword } = user._doc;
+
+    return res.status(200).json({ ...userWithoutPassword, token });
   } catch (error) {
     return next(error);
   }
