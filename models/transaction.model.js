@@ -24,6 +24,13 @@ const transactionSchema = mongoose.Schema(
   { timestamps: true }
 );
 
+transactionSchema.pre("save", function (next) {
+  if (this.datetime === null) {
+    this.datetime = Date.now();
+  }
+  next();
+});
+
 const Transaction = mongoose.model("Transaction", transactionSchema);
 
 export default Transaction;
